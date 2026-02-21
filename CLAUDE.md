@@ -9,15 +9,21 @@ Static website presenting contact details for a portfolio company. The goal is t
 ### Header (top)
 - Main heading: **stegosaurus s.r.o.**
 - Subtitle: Specializing in Node.js
+- Node.js logo image
 
 ### Center
-- 3D Stegosaurus model in IDLE animation state (eye-catcher)
+- Stegosaurus video background with two animation states
+- Video uses `object-fit: contain` to always fit within screen width without cropping
 
 ### Footer (bottom)
+- Background: `ground-layer.png` - determines footer height (scales with viewport width)
+- Max height: 20vh with overflow hidden
+- Contact info overlayed absolutely and vertically centered
+
 Contact details:
 - Company name: stegosaurus s.r.o.
-- Address: (sourced from Finstat)
-- VAT number: (sourced from Finstat)
+- Address: Rajecká Lesná 257, 013 15
+- VAT number: SK2122158610
 - Email: juraj.zovinecc@gmail.com
 - Phone: +421 915 859 604
 
@@ -25,18 +31,14 @@ Contact details:
 
 Company information sourced from: https://finstat.sk/56000812
 
-## Stegosaurus 3D Model
+## Stegosaurus Animation
 
-Interactive 3D model embedded via Sketchfab, displayed in IDLE state by default.
+Background video with mouse-triggered attack animation:
 
-- **Model URL:** https://sketchfab.com/3d-models/stegosaurus-80d282abed5041e49aef86a4c1af8091
-- **Embed endpoint:** `https://sketchfab.com/models/80d282abed5041e49aef86a4c1af8091/embed`
-- **Attribution:** Model by Mark Cao on Sketchfab (CC license - requires attribution)
-
-### Future Enhancement
-
-Trigger tail whip animation on aggressive mouse movements. The model supports two animation states:
-- **IDLE** - default calm state
-- **ATTACK** - triggered on rapid mouse movements
-
-This requires Sketchfab API integration to control animation playback.
+- **Video files:**
+  - `public/animation-stegosaurus-idle.webm` - default calm state (looped)
+  - `public/animation-stegosaurus-attack.webm` - triggered on rapid mouse movements
+- **Trigger:** Mouse velocity exceeding threshold (half screen height per second, averaged over 5 samples)
+- **Cooldown:** 1.5 seconds between attacks
+- **Behavior:** Attack plays once, then returns to idle loop
+- **Model attribution:** Based on 3D model by Mark Cao on Sketchfab (CC license)

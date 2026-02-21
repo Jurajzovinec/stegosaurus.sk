@@ -101,7 +101,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             z-index: 0;
         }
 
@@ -153,28 +153,30 @@
         /* Footer */
         footer {
             position: relative;
-            background: rgba(216, 216, 216, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 1rem;
             flex-shrink: 0;
+            max-height: 20vh;
+            overflow: hidden;
         }
 
         .ground-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: block;
             width: 100%;
             height: auto;
-            z-index: -1;
-            pointer-events: none;
         }
 
         .contact-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             max-width: 700px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem 1.5rem;
+            align-content: center;
+            padding: 1rem;
         }
 
         .contact-item {
@@ -231,6 +233,7 @@
             .contact-info {
                 grid-template-columns: 1fr;
                 gap: 0.4rem 1rem;
+                padding: 0.5rem;
             }
 
             .contact-item .label,
@@ -263,7 +266,7 @@
                 </div>
                 <div class="contact-item">
                     <span class="label">Address</span>
-                    <span class="value">Rajecká Lesná 257, 013 15 Rajecká Lesná</span>
+                    <span class="value">Rajecká Lesná 257, 013 15</span>
                 </div>
                 <div class="contact-item">
                     <span class="label">VAT</span>
