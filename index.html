@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stegosaurus s.r.o. | Node.js Development - Softvérový vývoj</title>
+    <meta name="description" content="stegosaurus s.r.o. - Profesionálny vývoj softvéru v Node.js. Špecializujeme sa na backend riešenia, API vývoj a webové aplikácie. Kontakt: juraj.zovinecc@gmail.com, +421 915 859 604">
+    <meta name="keywords" content="Node.js, JavaScript, TypeScript, backend development, API, webové aplikácie, softvérový vývoj, Slovakia, Žilina, Rajecká Lesná, stegosaurus">
+
+    <!-- Geo tags for local SEO -->
+    <meta name="geo.region" content="SK-ZI">
+    <meta name="geo.placename" content="Rajecká Lesná, Žilina">
+    <meta name="geo.position" content="49.1500;18.6500">
+    <meta name="ICBM" content="49.1500, 18.6500">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stegosaurus.sk/">
+    <meta property="og:title" content="stegosaurus s.r.o. | Node.js Development">
+    <meta property="og:description" content="Profesionálny vývoj softvéru v Node.js. Backend riešenia, API vývoj a webové aplikácie.">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:image" content="https://stegosaurus.sk/public/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="stegosaurus s.r.o. | Node.js Development">
+    <meta name="twitter:description" content="Profesionálny vývoj softvéru v Node.js. Backend riešenia, API vývoj a webové aplikácie.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://stegosaurus.sk/">
+
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "stegosaurus s.r.o.",
+        "alternateName": ["stegosaurus", "stegosaurus sro", "stegosaurus.sk"],
+        "description": "Profesionálny vývoj softvéru v Node.js. Špecializujeme sa na backend riešenia, API vývoj a webové aplikácie.",
+        "url": "https://stegosaurus.sk",
+        "email": "juraj.zovinecc@gmail.com",
+        "telephone": "+421915859604",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rajecká Lesná 257",
+            "addressLocality": "Rajecká Lesná",
+            "postalCode": "013 15",
+            "addressRegion": "Žilinský kraj",
+            "addressCountry": "SK"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "49.1500",
+            "longitude": "18.6500"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Slovakia"
+        },
+        "sameAs": [],
+        "knowsAbout": ["Node.js", "JavaScript", "TypeScript", "Backend Development", "API Development", "Web Applications"]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #d8d8d8;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Background video */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Content wrapper */
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 1.5rem 1rem 1rem;
+            flex-shrink: 0;
+            background: rgba(216, 216, 216, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        header h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #4a4a4a;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .nodejs-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Spacer to push footer to bottom */
+        .spacer {
+            flex: 1;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            background: rgba(216, 216, 216, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem;
+            flex-shrink: 0;
+        }
+
+        .ground-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .contact-info {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-item .label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .contact-item .value {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 0.5rem 0.75rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header h2 {
+                font-size: 0.85rem;
+            }
+
+            .nodejs-logo {
+                height: 40px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 0.4rem 1rem;
+            }
+
+            .contact-item .label,
+            .contact-item .value {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="stegosaurus" class="bg-video" autoplay loop muted playsinline>
+        <source src="public/animation-stegosaurus-idle.webm" type="video/webm">
+    </video>
+
+    <div class="content">
+        <header>
+            <h1>stegosaurus s.r.o.</h1>
+            <h2>Specializing in Node.js</h2>
+            <img src="public/node-js.png" alt="Node.js" class="nodejs-logo">
+        </header>
+
+        <div class="spacer"></div>
+
+        <footer>
+            <img src="public/ground-layer.png" alt="" class="ground-layer">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="label">Company</span>
+                    <span class="value">stegosaurus s.r.o.</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Address</span>
+                    <span class="value">Rajecká Lesná 257, 013 15 Rajecká Lesná</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">VAT</span>
+                    <span class="value">SK2122158610</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value"><a href="mailto:juraj.zovinecc@gmail.com">juraj.zovinecc@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value"><a href="tel:+421915859604">+421 915 859 604</a></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const video = document.getElementById('stegosaurus');
+        const IDLE_SRC = 'public/animation-stegosaurus-idle.webm';
+        const ATTACK_SRC = 'public/animation-stegosaurus-attack.webm';
+
+        let currentState = 'idle';
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        let lastMouseTime = 0;
+        let velocitySamples = [];
+        const SAMPLE_WINDOW = 5; // Number of samples to average
+        const ATTACK_COOLDOWN = 1500; // Minimum time between attacks (ms)
+
+        // Dynamic threshold: half screen height per second
+        const getVelocityThreshold = () => window.innerHeight * 5;
+
+        let lastAttackTime = 0;
+
+        function getAverageVelocity() {
+            if (velocitySamples.length === 0) return 0;
+            return velocitySamples.reduce((a, b) => a + b, 0) / velocitySamples.length;
+        }
+
+        function switchToAttack() {
+            if (currentState === 'attack') return;
+
+            currentState = 'attack';
+            video.loop = false;
+            video.src = ATTACK_SRC;
+            video.load();
+            video.play();
+        }
+
+        function switchToIdle() {
+            if (currentState === 'idle') return;
+
+            currentState = 'idle';
+            video.loop = true;
+            video.src = IDLE_SRC;
+            video.load();
+            video.play();
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            const dt = (now - lastMouseTime) / 1000; // Convert to seconds
+
+            if (dt > 0 && dt < 0.1) { // Only sample if time delta is reasonable
+                const dx = e.clientX - lastMouseX;
+                const dy = e.clientY - lastMouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const velocity = distance / dt;
+
+                velocitySamples.push(velocity);
+                if (velocitySamples.length > SAMPLE_WINDOW) {
+                    velocitySamples.shift();
+                }
+
+                const avgVelocity = getAverageVelocity();
+
+                if (avgVelocity > getVelocityThreshold() && now - lastAttackTime > ATTACK_COOLDOWN) {
+                    lastAttackTime = now;
+                    velocitySamples = []; // Reset samples
+                    switchToAttack();
+                }
+            }
+
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+            lastMouseTime = now;
+        });
+
+        // Return to idle when attack video ends
+        video.addEventListener('ended', () => {
+            if (currentState === 'attack') {
+                switchToIdle();
+            }
+        });
+    </script>
+</body>
+</html>
