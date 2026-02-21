@@ -1,0 +1,16 @@
+{
+    "name": "stegosaurus s.r.o.",
+    "short_name": "stegosaurus",
+    "description": "Profesionálny vývoj softvéru v Node.js",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#d8d8d8",
+    "theme_color": "#1a1a1a",
+    "icons": [
+        {
+            "src": "/public/icon.png",
+            "sizes": "any",
+            "type": "image/png"
+        }
+    ]
+}
