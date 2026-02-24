@@ -152,68 +152,44 @@
 
         /* Footer */
         footer {
-            position: relative;
+            text-align: center;
+            padding: 1.5rem 1rem 1rem;
             flex-shrink: 0;
-            min-height: 15vh;
-            max-height: 20vh;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            backdrop-filter: blur(3px);
-            background: rgba(0, 0, 0, 0.05);
-            z-index: 1;
-        }
-
-        .ground-layer {
-            display: block;
-            width: 100%;
-            height: auto;
+            background: rgba(216, 216, 216, 0.1);
+            backdrop-filter: blur(8px);
         }
 
         .contact-info {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             max-width: 700px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem 1.5rem;
             align-content: center;
-            padding: 1rem;
-            z-index: 2;
         }
 
         .contact-item {
             display: flex;
             gap: 0.5rem;
             align-items: flex-start;
+            text-align: left;
         }
 
         .contact-item .label {
-            color: rgba(255, 255, 255, 0.9);
+            color: #4a4a4a;
             font-size: 0.85rem;
             font-weight: 500;
             min-width: 60px;
         }
 
         .contact-item .value {
-            color: #fff;
+            color: #1a1a1a;
             font-size: 0.85rem;
             font-weight: 500;
         }
 
         .contact-item a {
-            color: #fff;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
@@ -247,7 +223,6 @@
             .contact-info {
                 grid-template-columns: 1fr;
                 gap: 0.4rem 1rem;
-                padding: 0.5rem;
             }
 
             .contact-item .label,
@@ -272,7 +247,6 @@
         <div class="spacer"></div>
 
         <footer>
-            <img src="public/ground-layer.png" alt="" class="ground-layer">
             <div class="contact-info">
                 <div class="contact-item">
                     <span class="label">Company</span>
@@ -341,13 +315,13 @@
             video.play();
         }
 
-        document.addEventListener('mousemove', (e) => {
+        function handleMove(x, y) {
             const now = performance.now();
             const dt = (now - lastMouseTime) / 1000; // Convert to seconds
 
             if (dt > 0 && dt < 0.1) { // Only sample if time delta is reasonable
-                const dx = e.clientX - lastMouseX;
-                const dy = e.clientY - lastMouseY;
+                const dx = x - lastMouseX;
+                const dy = y - lastMouseY;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 const velocity = distance / dt;
 
@@ -365,10 +339,19 @@
                 }
             }
 
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
+            lastMouseX = x;
+            lastMouseY = y;
             lastMouseTime = now;
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            handleMove(e.clientX, e.clientY);
         });
+
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            handleMove(touch.clientX, touch.clientY);
+        }, { passive: true });
 
         // Return to idle when attack video ends
         video.addEventListener('ended', () => {
